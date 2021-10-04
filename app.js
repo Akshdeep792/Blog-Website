@@ -19,7 +19,8 @@ let posts =[];
 
 app.get("/", function(req, res){
   // head = "Hello";
-    res.render("home", {para1 : homeStartingContent});
+    res.render("home", {para1 : homeStartingContent,
+    posts:posts});
     // console.log(posts);
 });
 app.get("/about", function(req, res){
@@ -47,6 +48,18 @@ app.post("/compose", function(req,res){
 });
 
 
+
+app.get("/posts/:postName", function(req,res){
+  var requestedTitle = req.params.postName;
+  for(var i= 0 ; i<posts.length ; i++){
+    if(requestedTitle == posts[i].title){
+      console.log("Match Found!");
+    }
+    else{
+      console.log("Not found");
+    }
+  }
+});
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
