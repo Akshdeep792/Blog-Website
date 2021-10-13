@@ -48,6 +48,12 @@ app.post("/compose", function(req,res){
   res.redirect("/");
 });
 
+app.get("/quotes", function(req,res){
+  res.render("quotes");
+  // res.send("You are in!");
+})
+
+
 
 
 app.get("/posts/:postName", function(req,res){

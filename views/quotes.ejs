@@ -1,0 +1,33 @@
+<%- include("partials/header") -%>
+
+<div class="quote-box">
+    <p id="quote">
+        "Your Quotes goes here....."
+    </p>
+    <small id="author">Author</small>
+</div>
+<div class="btn">
+<button id="btn">New Quote</button>
+</div>
+
+<script>
+    const quote = document.querySelector("#quote");
+    const author = document.querySelector("#author");
+    const btn = document.querySelector("#btn");
+
+
+    btn.addEventListener("click", getQuote);
+
+    function getQuote(){
+        fetch('http://api.quotable.io/random').then(res => res.json())
+        .then(data => {
+            quote.innerHTML = `"${data.content}"`;
+            author.innerHTML = `"${data.author}"`;
+        })
+    }
+</script>
+
+<%- include("partials/footer") -%>
+
+
+
